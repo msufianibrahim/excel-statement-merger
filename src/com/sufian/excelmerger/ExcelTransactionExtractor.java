@@ -16,7 +16,7 @@ import java.util.List;
 
 public class ExcelTransactionExtractor {
 
-    public static List<Transaction> extractTransactionsFromExcel(File file, String selectedMonth) throws IOException {
+    public static List<Transaction> extractTransactionsFromExcel(File file, String selectedMonth, String fileName) throws IOException {
         List<Transaction> transactions = new ArrayList<>();
         SimpleDateFormat[] dateFormats = {
                 new SimpleDateFormat("dd/MM/yyyy"),
@@ -26,6 +26,7 @@ public class ExcelTransactionExtractor {
                 new SimpleDateFormat("dd-MM-yyyy"),
                 new SimpleDateFormat("dd-MM")
         };
+        
 
         try (FileInputStream fis = new FileInputStream(file);
              Workbook workbook = WorkbookFactory.create(fis)) {
@@ -47,7 +48,7 @@ public class ExcelTransactionExtractor {
                             String description = descriptionCell.getStringCellValue();
                             Double amount = amountCell.getNumericCellValue();
 
-                            Transaction transaction = new Transaction(dateStr, description, amount);
+                            Transaction transaction = new Transaction(dateStr, description, amount, fileName);
                             transactions.add(transaction);
                         }
                     }
@@ -77,7 +78,7 @@ public class ExcelTransactionExtractor {
                     .filter(path -> path.toString().toLowerCase().endsWith(".xlsx")) // Filter Excel files
                     .forEach(path -> {
                         try {
-                            List<Transaction> transactions = extractTransactionsFromExcel(path.toFile(), selectedMonth);
+                            List<Transaction> transactions = extractTransactionsFromExcel(path.toFile(), selectedMonth, path.getFileName().toString());
                             allTransactions.addAll(transactions); // Add transactions to the list
                         } catch (IOException e) {
                             e.printStackTrace();
@@ -95,11 +96,13 @@ public class ExcelTransactionExtractor {
         private String date;
         private String description;
         private double amount;
+        private String fileName;
 
-        public Transaction(String date, String description, double amount) {
+        public Transaction(String date, String description, double amount, String fileName) {
             this.setDate(date);
             this.setDescription(description);
             this.setAmount(amount);
+            this.setFileName(fileName);
         }
         
         public static String getFormattedDate(Date date) {
@@ -134,6 +137,14 @@ public class ExcelTransactionExtractor {
 		@Override
 		public int compareTo(Transaction other) {
 			return this.date.compareTo(other.date);
+		}
+
+		public String getFileName() {
+			return fileName;
+		}
+
+		public void setFileName(String fileName) {
+			this.fileName = fileName;
 		}
     }
 

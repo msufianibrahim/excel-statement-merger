@@ -19,7 +19,7 @@ public class ExcelCreator {
 
             // Create a header row
             Row headerRow = sheet.createRow(0);
-            String[] headers = {"Date", "Description", "Amount"};
+            String[] headers = {"Date", "Description", "Amount", "File Name"};
             for (int i = 0; i < headers.length; i++) {
                 Cell cell = headerRow.createCell(i);
                 cell.setCellValue(headers[i]);
@@ -38,6 +38,7 @@ public class ExcelCreator {
                 Cell amountCell = row.createCell(2);
                 amountCell.setCellValue(transaction.getAmount());
                 amountCell.setCellStyle(decimalStyle); // Apply the decimal style to the amount column
+                row.createCell(3).setCellValue(transaction.getFileName());
             }
 
             // Auto-size columns
