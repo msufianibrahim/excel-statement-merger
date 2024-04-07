@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<launch4jConfig>
+  <dontWrapJar>false</dontWrapJar>
+  <headerType>gui</headerType>
+  <jar>C:\Personal\statement-excel-merger\statement-excel-merger\ExcelStatementMerger.jar</jar>
+  <outfile>C:\Personal\statement-excel-merger\statement-excel-merger\Excel Statement Merger.exe</outfile>
+  <errTitle></errTitle>
+  <cmdLine></cmdLine>
+  <chdir>.</chdir>
+  <priority>normal</priority>
+  <downloadUrl></downloadUrl>
+  <supportUrl></supportUrl>
+  <stayAlive>true</stayAlive>
+  <restartOnCrash>false</restartOnCrash>
+  <manifest></manifest>
+  <icon>C:\Personal\statement-excel-merger\statement-excel-merger\spreadsheet.ico</icon>
+  <classPath>
+    <mainClass>com.sufian.excelmerger.ExcelMergerGUI</mainClass>
+    <cp>.</cp>
+    <cp>ExcelStatementMerger_lib/poi-5.2.3.jar</cp>
+    <cp>ExcelStatementMerger_lib/poi-examples-5.2.3.jar</cp>
+    <cp>ExcelStatementMerger_lib/poi-excelant-5.2.3.jar</cp>
+    <cp>ExcelStatementMerger_lib/poi-javadoc-5.2.3.jar</cp>
+    <cp>ExcelStatementMerger_lib/poi-ooxml-5.2.3.jar</cp>
+    <cp>ExcelStatementMerger_lib/poi-ooxml-full-5.2.3.jar</cp>
+    <cp>ExcelStatementMerger_lib/poi-ooxml-lite-5.2.3.jar</cp>
+    <cp>ExcelStatementMerger_lib/poi-scratchpad-5.2.3.jar</cp>
+    <cp>ExcelStatementMerger_lib/commons-collections4-4.4.jar</cp>
+    <cp>ExcelStatementMerger_lib/commons-collections4-4.4-javadoc.jar</cp>
+    <cp>ExcelStatementMerger_lib/commons-collections4-4.4-sources.jar</cp>
+    <cp>ExcelStatementMerger_lib/commons-compress-1.26.1.jar</cp>
+    <cp>ExcelStatementMerger_lib/commons-compress-1.26.1-javadoc.jar</cp>
+    <cp>ExcelStatementMerger_lib/commons-compress-1.26.1-sources.jar</cp>
+    <cp>ExcelStatementMerger_lib/commons-io-2.16.0.jar</cp>
+    <cp>ExcelStatementMerger_lib/commons-io-2.16.0-javadoc.jar</cp>
+    <cp>ExcelStatementMerger_lib/commons-io-2.16.0-sources.jar</cp>
+    <cp>ExcelStatementMerger_lib/commons-io-2.16.0-tests.jar</cp>
+    <cp>ExcelStatementMerger_lib/commons-io-2.16.0-test-sources.jar</cp>
+    <cp>ExcelStatementMerger_lib/log4j-api-2.21.1.jar</cp>
+    <cp>ExcelStatementMerger_lib/xmlbeans-5.2.0.jar</cp>
+    <cp>ExcelStatementMerger_lib/xmlbeans-5.2.0-javadoc.jar</cp>
+    <cp>ExcelStatementMerger_lib/xmlbeans-5.2.0-sources.jar</cp>
+  </classPath>
+  <jre>
+    <path>%JAVA_HOME%;%PATH%</path>
+    <requiresJdk>true</requiresJdk>
+    <requires64Bit>false</requires64Bit>
+    <minVersion>1.8.0</minVersion>
+    <maxVersion></maxVersion>
+  </jre>
+</launch4jConfig>
