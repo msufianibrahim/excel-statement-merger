@@ -1,11 +1,16 @@
 package com.sufian.excelmerger;
 
 import javax.swing.*;
+
+import com.sufian.excelmerger.ExcelTransactionExtractor.Transaction;
+
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 public class ExcelMergerGUI extends JFrame {
     /**
@@ -148,8 +153,14 @@ public class ExcelMergerGUI extends JFrame {
         String filePath = outputPath + "\\" + month + ".xlsx";
         try {
         	if(!month.isEmpty() && !inputPath.isEmpty() && !outputPath.isEmpty()) {
-        		ExcelCreator.createExcelFile(ExcelTransactionExtractor.extractFromAllExcel(inputPath, month), filePath);
-        		JOptionPane.showMessageDialog(null, "Excel file successfully created");
+        		List<Transaction> allTransactions = new ArrayList<>();
+        		allTransactions = ExcelTransactionExtractor.extractFromAllExcel(inputPath, month);
+        		if(allTransactions.size() == 0) {
+        			JOptionPane.showMessageDialog(null, "There are no transactions for the month of " + month);
+        		} else {
+        			ExcelCreator.createExcelFile(allTransactions, filePath);
+            		JOptionPane.showMessageDialog(null, "Excel file successfully created");
+        		}
         	}
         	else
         		JOptionPane.showMessageDialog(null, "Please select valid directory for input and output path");
